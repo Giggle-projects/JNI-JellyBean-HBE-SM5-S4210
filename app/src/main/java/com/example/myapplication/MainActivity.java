@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.TextView;
@@ -20,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        Log.d("KeyUP Event", event.getKeyCode()+"");
+        if(event.getKeyCode() == 145) {
+            Log.d("KeyUP Event", event.getKeyCode()+"");
+        }
         return true;
     }
 
@@ -33,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         TextView tv = binding.sampleText;
-        tv.setText(ledControl(0b1010_1101));
+        lcdInit();
+        tv.setText(ledControl(0b1011_0100));
     }
 
     private void sleep(int l) {
@@ -50,4 +54,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public native String ledControl(int bitCount);
     public native String piezoControl(int i);
+    public native String segmentControl(int data);
+    public native String segmentIOControl(int data);
+    public native String lcdInit();
+    public native String lcdPrint(String msg);
 }
