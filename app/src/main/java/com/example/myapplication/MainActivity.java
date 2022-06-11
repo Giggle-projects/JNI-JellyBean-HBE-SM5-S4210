@@ -33,13 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         TextView tv = binding.sampleText;
-        tv.setText(piezoControl(33));
-        sleep(500);
-        tv.setText(piezoControl(1));
-        sleep(500);
-        tv.setText(piezoControl(21));
-        sleep(500);
-        piezoControl(0);
+        tv.setText(ledControl(0b1010_1101));
     }
 
     private void sleep(int l) {
@@ -54,6 +48,6 @@ public class MainActivity extends AppCompatActivity {
      * A native method that is implemented by the 'myapplication' native library,
      * which is packaged with this application.
      */
-    public native String ledControl();
+    public native String ledControl(int bitCount);
     public native String piezoControl(int i);
 }

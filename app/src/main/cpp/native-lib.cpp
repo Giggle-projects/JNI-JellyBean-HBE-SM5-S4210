@@ -20,24 +20,27 @@
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_example_myapplication_MainActivity_ledControl(
         JNIEnv* env,
-        jobject /* this */) {
+        jobject /* this */,
+        jint bitCount) {
     int fd = open("/dev/fpga_led", O_WRONLY);
     if(fd == -1 ) {
         std::string hello = "ERROR";
         return env->NewStringUTF(hello.c_str());
     }
 
-    unsigned char val;
-    val = '3'-'0';
+    unsigned char val = bitCount;
     write(fd, &val, sizeof(val));
 
     close(fd);
-    std::string hello = "LED";
+    std::string hello = bitCount+"";
     return env->NewStringUTF(hello.c_str());
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_example_myapplication_MainActivity_piezoControl(JNIEnv* env, jobject /* this */, jint num) {
+Java_com_example_myapplication_MainActivity_piezoControl(
+        JNIEnv* env,
+        jobject /* this */,
+        jint num) {
     int fd = open("/dev/fpga_piezo", O_WRONLY);
     if(fd == -1 ) {
         std::string hello = "ERROR";
