@@ -19,10 +19,12 @@ Java_com_example_myapplication_MainActivity_ledControl(
     if (fd == -1) {
         return env->NewStringUTF(errorMessage.c_str());
     }
+
     unsigned char val = (((bitCount & 0x1) << 7) | ((bitCount & 0x2) << 5) | ((bitCount & 0x4) << 3) | \
             ((bitCount & 0x8) << 1) | ((bitCount & 0x10) >> 1) | ((bitCount & 0x20) >> 3) | \
             ((bitCount & 0x40) >> 5) | ((bitCount & 0x80) >> 7));
     write(fd, &val, sizeof(val));
+
     close(fd);
     return env->NewStringUTF(successMessage.c_str());
 }
@@ -52,31 +54,18 @@ Java_com_example_myapplication_MainActivity_segmentControl(
         JNIEnv *env,
         jobject /* this */,
         jint data) {
-    int fd = open("/dev/fpga_segment", O_RDWR | O_SYNC);
-    if (fd == -1) {
-        std::string hello = "ERROR";
-        return env->NewStringUTF(hello.c_str());
-    }
-    write(fd, &data, 4);
-    close(fd);
-    std::string hello = "SEGMENT";
-    return env->NewStringUTF(hello.c_str());
-}
 
-extern "C" JNIEXPORT jstring JNICALL
-Java_com_example_myapplication_MainActivity_segmentIOControl(
-        JNIEnv *env,
-        jobject /* this */,
-        jint data) {
     int fd = open("/dev/fpga_segment", O_RDWR | O_SYNC);
     if (fd == -1) {
-        std::string hello = "ERROR";
-        return env->NewStringUTF(hello.c_str());
+        return env->NewStringUTF(errorMessage.c_str());
     }
-    ioctl(fd, data, NULL, NULL);
+
+    char buf[7];
+    sprintf(buf, "%06d", data);
+    write(fd, buf, 6);
+
     close(fd);
-    std::string hello = "SEGMENT";
-    return env->NewStringUTF(hello.c_str());
+    return env->NewStringUTF(successMessage.c_str());
 }
 
 extern "C" JNIEXPORT jstring JNICALL

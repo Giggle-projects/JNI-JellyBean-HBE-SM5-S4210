@@ -38,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = binding.sampleText;
         lcdInit();
         tv.setText(ledControl(0b1011_0100));
+
+        for(int count = 10000; count>=0; count--) {
+            segmentControl(count);
+            sleep(1);
+        }
     }
 
     private void sleep(int l) {
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     /**
      * A native method that is implemented by the 'myapplication' native library,
      * which is packaged with this application.
@@ -55,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
     public native String ledControl(int bitCount);
     public native String piezoControl(int i);
     public native String segmentControl(int data);
-    public native String segmentIOControl(int data);
+
+    //public native String segmentIOControl(int data);
     public native String lcdInit();
     public native String lcdPrint(String msg);
 }
