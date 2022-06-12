@@ -4,20 +4,18 @@ import static com.example.myapplication.GlobalNative.segmentControl;
 
 public class Segment {
 
-    private final Thread thread;
+    private Thread thread;
     private int printData;
 
-    public Segment() {
+    public void print(int i) {
         thread = new Thread(new PrintSegmentRunnable());
         thread.start();
-    }
-
-    public void print(int i) {
         this.printData = i;
     }
 
     public void stop() {
         this.printData = 0;
+        thread.interrupt();
     }
 
     private class PrintSegmentRunnable implements Runnable {

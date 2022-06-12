@@ -4,16 +4,18 @@ import static com.example.myapplication.GlobalNative.printDotMatrix;
 
 public class DotMatrix {
 
-    private final Thread thread;
+    private Thread thread;
     private String msg = "";
 
-    public DotMatrix() {
+    public void print(String msg) {
         thread = new Thread(new PrintDotMatrixRunnable());
         thread.start();
+        this.msg = msg;
     }
 
-    public void changeMessage(String msg) {
-        this.msg = msg;
+    public void stop() {
+        printDotMatrix("", 20);
+        thread.interrupt();
     }
 
     private class PrintDotMatrixRunnable implements Runnable {

@@ -4,8 +4,6 @@ public class GlobalNative {
 
     public static native String ledControl(int bitCount);
 
-    public static native String piezoControl(int i);
-
     public static native String segmentControl(int data);
 
     public static native String lcdClear();
