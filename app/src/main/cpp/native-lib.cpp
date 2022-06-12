@@ -93,23 +93,21 @@ Java_com_example_myapplication_GlobalNative_lcdPrint(
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_example_myapplication_GlobalNative_piezoControl(
-        JNIEnv *env,
+        JNIEnv* env,
         jclass clazz,
         jint num
 ) {
     int fd = open("/dev/fpga_piezo", O_WRONLY);
-    if (fd == -1) {
-        std::string hello = "ERROR";
-        return env->NewStringUTF(hello.c_str());
+    if(fd == -1 ) {
+        return env->NewStringUTF(errorMessage.c_str());
     }
 
     unsigned char val;
     val = num;
-    write(fd, &val, sizeof(val));
+    write(fd, &val, 1);
 
     close(fd);
-    std::string hello = "LED";
-    return env->NewStringUTF(hello.c_str());
+    return env->NewStringUTF(successMessage.c_str());
 }
 
 extern "C" JNIEXPORT jstring JNICALL
