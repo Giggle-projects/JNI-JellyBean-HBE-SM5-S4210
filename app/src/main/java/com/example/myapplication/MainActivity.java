@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import com.example.myapplication.databinding.ActivityMainBinding;
 import com.example.myapplication.hw.DotMatrix;
+import com.example.myapplication.hw.HwContainer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ActivityMainBinding binding;
+    private DotMatrix dotMatrix = HwContainer.dotMatrix;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -33,16 +35,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        DotMatrix.changeMessage("HelloCome");
-        DotMatrix.run();
-
+        dotMatrix.changeMessage("HelloCome");
         Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(view -> {
-            DotMatrix.stop();
+            dotMatrix.changeMessage("");
             Intent intent = new Intent(MainActivity.this, ProblemActivity.class);
             startActivity(intent);
         });
