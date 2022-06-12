@@ -10,9 +10,9 @@ std::string errorMessage = "ERROR";
 std::string successMessage = "SUCCEED";
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_example_myapplication_MainActivity_ledControl(
+Java_com_example_myapplication_GlobalNative_ledControl(
         JNIEnv *env,
-        jobject /* this */,
+        jclass clazz,
         jint bitCount
 ) {
     int fd = open("/dev/fpga_led", O_WRONLY);
@@ -31,9 +31,9 @@ Java_com_example_myapplication_MainActivity_ledControl(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_example_myapplication_MainActivity_segmentControl(
+Java_com_example_myapplication_GlobalNative_segmentControl(
         JNIEnv *env,
-        jobject /* this */,
+        jclass clazz,
         jint data
 ) {
     int fd = open("/dev/fpga_segment", O_RDWR | O_SYNC);
@@ -50,9 +50,9 @@ Java_com_example_myapplication_MainActivity_segmentControl(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_example_myapplication_MainActivity_lcdClear(
+Java_com_example_myapplication_GlobalNative_lcdClear(
         JNIEnv *env,
-        jobject obj
+        jclass clazz
 ) {
     int fd = open("/dev/fpga_textlcd", O_WRONLY | O_NDELAY);
     if (fd == -1) {
@@ -64,9 +64,9 @@ Java_com_example_myapplication_MainActivity_lcdClear(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_example_myapplication_MainActivity_lcdPrint(
+Java_com_example_myapplication_GlobalNative_lcdPrint(
         JNIEnv *env,
-        jobject obj,
+        jclass clazz,
         jint lineIndex,
         jstring msg
 ) {
@@ -92,9 +92,9 @@ Java_com_example_myapplication_MainActivity_lcdPrint(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_example_myapplication_MainActivity_piezoControl(
+Java_com_example_myapplication_GlobalNative_piezoControl(
         JNIEnv *env,
-        jobject /* this */,
+        jclass clazz,
         jint num
 ) {
     int fd = open("/dev/fpga_piezo", O_WRONLY);
@@ -112,13 +112,10 @@ Java_com_example_myapplication_MainActivity_piezoControl(
     return env->NewStringUTF(hello.c_str());
 }
 
-
-
-extern "C"
-JNIEXPORT jstring JNICALL
-Java_com_example_myapplication_MainActivity_dotMatrixControl(
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_example_myapplication_GlobalNative_dotMatrixControl(
         JNIEnv *env,
-        jobject thiz,
+        jclass clazz,
         jstring data
 ) {
     const char *pStr = env->GetStringUTFChars(data, 0);
