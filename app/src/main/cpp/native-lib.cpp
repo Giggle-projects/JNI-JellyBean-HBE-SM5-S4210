@@ -75,7 +75,7 @@ Java_com_example_myapplication_MainActivity_lcdPrint(
         return env->NewStringUTF(errorMessage.c_str());
     }
     const char *str = env->GetStringUTFChars(msg, 0);
-    switch(lineIndex) {
+    switch (lineIndex) {
         case 0:
             ioctl(fd, 5);
             break;
@@ -110,4 +110,26 @@ Java_com_example_myapplication_MainActivity_piezoControl(
     close(fd);
     std::string hello = "LED";
     return env->NewStringUTF(hello.c_str());
+}
+
+
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_example_myapplication_MainActivity_dotMatrixControl(
+        JNIEnv *env,
+        jobject thiz,
+        jstring data
+) {
+    const char *pStr = env->GetStringUTFChars(data, 0);
+    int len = env->GetStringLength(data);
+
+    int fd = open("/dev/fpga_dotmatrix", O_RDWR | O_SYNC);
+    if (fd == -1) {
+        return env->NewStringUTF(errorMessage.c_str());
+    }
+
+    write(fd, pStr, len);
+    close(fd);
+    return env->NewStringUTF(successMessage.c_str());
 }
