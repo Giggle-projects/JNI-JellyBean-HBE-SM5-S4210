@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.Button;
 
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.ActivityMainBinding;
 import com.example.myapplication.hw.DotMatrix;
 import com.example.myapplication.hw.HwContainer;
+import com.example.myapplication.hw.Keypad;
 import com.example.myapplication.hw.LED;
 import com.example.myapplication.hw.Segment;
 import com.example.myapplication.hw.TextLCD;
@@ -26,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
     private final Segment segment = HwContainer.segment;
     private final TextLCD textLcd = HwContainer.textLcd;
     private final LED led = HwContainer.led;
+    private final Keypad keypad = HwContainer.keypad;
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        Log.d("key down event", keypad.getPositionOfCode(event.getKeyCode())+"");
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
