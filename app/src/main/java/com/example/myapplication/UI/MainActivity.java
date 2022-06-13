@@ -1,15 +1,14 @@
-package com.example.myapplication;
-
+package com.example.myapplication.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Button;
 
+import com.example.myapplication.R;
 import com.example.myapplication.databinding.ActivityMainBinding;
 import com.example.myapplication.hw.DotMatrix;
 import com.example.myapplication.hw.HwContainer;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
-    private final DotMatrix dotMatrix = HwContainer.dotMatrix;
+    public static DotMatrix dotMatrix = HwContainer.dotMatrix;
     private final Segment segment = HwContainer.segment;
     private final TextLCD textLcd = HwContainer.textLcd;
     private final LED led = HwContainer.led;
@@ -44,32 +43,30 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        textLcd.startTextLCD("hi", "hello");
+        textLcd.startTextLCD("Let's play a", "Memory Game");
         dotMatrix.print("WelCome");
         led.printLinear();
         segment.print(220613);
 
-        for(int i =0 ; i<50; i++) {
-            piezoControl(i);
-            SystemClock.sleep(50);
-        }
+        // for(int i =0 ; i<Integer.MAX_VALUE; i++) {
+        //     piezoControl(i);
+        //     SystemClock.sleep(1);
+        // }
 
-        for(int i =50 ; i>=0; i--) {
-            piezoControl(i);
-            SystemClock.sleep(50);
-        }
+         // for(int i =50 ; i>=0; i--) {
+         //     piezoControl(i);
+         //     SystemClock.sleep(5);
+         // }
 
         Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(view -> {
-                dotMatrix.stop();
                 segment.stop();
                 textLcd.startTextLCD("", "");
-                piezoControl(0);
                 Intent intent = new Intent(MainActivity.this, ProblemActivity.class);
                 startActivity(intent);
         });
     }
 
-    public native String piezoControl(int i);
+    //public native String piezoControl(int i);
 }
 

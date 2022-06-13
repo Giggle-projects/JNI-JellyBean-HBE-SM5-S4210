@@ -14,8 +14,12 @@ public class DotMatrix {
     }
 
     public void stop() {
-        printDotMatrix("", 20);
-        thread.interrupt();
+        this.msg = "";
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private class PrintDotMatrixRunnable implements Runnable {
