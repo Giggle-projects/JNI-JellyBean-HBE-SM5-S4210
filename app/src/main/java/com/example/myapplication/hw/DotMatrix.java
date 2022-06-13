@@ -6,30 +6,28 @@ public class DotMatrix {
 
     private Thread thread;
     private String msg = "";
+    private int speed = 20;
+
+    public DotMatrix() {
+        thread = new Thread(() -> {
+            while (true) {
+                printDotMatrix(msg, speed);
+            }
+        });
+        thread.start();
+    }
+
+    public void print(String msg, int speed) {
+        this.msg = msg;
+        this.speed = speed;
+    }
 
     public void print(String msg) {
-        thread = new Thread(new PrintDotMatrixRunnable());
-        thread.start();
-        this.msg = msg;
+        print(msg,20);
     }
 
     public void stop() {
         this.msg = "";
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private class PrintDotMatrixRunnable implements Runnable {
-
-        @Override
-        public void run() {
-            while (true) {
-                printDotMatrix(msg, 20);
-            }
-        }
     }
 }
 

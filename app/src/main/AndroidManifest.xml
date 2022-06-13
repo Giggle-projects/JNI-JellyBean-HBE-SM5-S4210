@@ -22,7 +22,7 @@
             android:name=".UI.ProblemActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.GameOverActivity"
+            android:name=".UI.GameActivity"
             android:exported="false" />
         <activity
             android:name=".UI.MainActivity"
