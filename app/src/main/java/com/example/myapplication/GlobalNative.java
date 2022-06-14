@@ -12,6 +12,8 @@ public class GlobalNative {
 
     public static native String dotMatrixControl(String data);
 
+    public static native String piezoControl(char i);
+
     public static void printDotMatrix(String value, int speed) {
         char chars[] = value.toCharArray();
         int[] asciis = new int[chars.length];

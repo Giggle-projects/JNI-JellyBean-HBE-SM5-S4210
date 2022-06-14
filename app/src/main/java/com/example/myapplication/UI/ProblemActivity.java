@@ -30,11 +30,9 @@ public class ProblemActivity extends AppCompatActivity {
         textLCD.print("Problem Page", "Focus Please!!");
         life.printLed();
 
-
         TextView timer = findViewById(R.id.timerText);
 
         CountDownTimer countDownTimer = new CountDownTimer(4000, 1000) {
-
             @Override
             public void onTick(long millisUntilFinished) {
                 timer.setText("Timer " + millisUntilFinished / 1000);

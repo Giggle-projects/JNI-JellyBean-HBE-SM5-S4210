@@ -16,9 +16,7 @@ public class DotMatrix {
             while (true) {
                 if(printCount > 0) {
                     printCount--;
-                }
-                Log.d("printCount", printCount+"");
-                if(printCount > 0) {
+                    Log.d("printCount", printCount+"");
                     printDotMatrix(msg, speed);
                 }
             }

@@ -92,18 +92,17 @@ Java_com_example_myapplication_GlobalNative_lcdPrint(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_example_myapplication_MainActivity_piezoControl(
+Java_com_example_myapplication_GlobalNative_piezoControl(
         JNIEnv* env,
-        jobject clazz,
-        jint num
+        jclass clazz,
+        jchar data
 ) {
     int fd = open("/dev/fpga_piezo", O_WRONLY);
     if(fd == -1 ) {
         return env->NewStringUTF(errorMessage.c_str());
     }
 
-    unsigned char val = num - '0';
-    write(fd, &val, 1);
+    write(fd, &data, 1);
 
     close(fd);
     return env->NewStringUTF(successMessage.c_str());

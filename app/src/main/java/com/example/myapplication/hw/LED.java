@@ -24,7 +24,7 @@ public class LED {
             }
             print(0b1111_1111);
         } catch (InterruptedException e) {
-            Log.d("d", "sdfa");
+            e.printStackTrace();
         }
     }
 }
