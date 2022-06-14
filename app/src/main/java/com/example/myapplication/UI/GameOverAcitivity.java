@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import com.example.myapplication.R;
@@ -25,31 +24,25 @@ public class GameOverAcitivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameover);
 
-        dotMatrix.print("Finish",10, Integer.MAX_VALUE);
-        textLCD.print("### Game Over ###","final score : " + score.print());
+        dotMatrix.print("Finish", 10, Integer.MAX_VALUE);
+        textLCD.print("### Game Over ###", "final score : " + score.value());
+        score.printSegment();
 
         Button yesBtn = findViewById(R.id.yesBtn);
         Button noBtn = findViewById(R.id.noBtn);
 
-        yesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                dotMatrix.stop();
-                textLCD.stop();
-                startActivity(new Intent(GameOverAcitivity.this, MainActivity.class));
-                finish();
-            }
+        yesBtn.setOnClickListener(view -> {
+            dotMatrix.stop();
+            textLCD.stop();
+            startActivity(new Intent(GameOverAcitivity.this, MainActivity.class));
+            finish();
         });
 
-        noBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dotMatrix.stop();
-                textLCD.stop();
-                startActivity(new Intent(GameOverAcitivity.this, MainActivity.class));
-                finish();
-            }
+        noBtn.setOnClickListener(view -> {
+            dotMatrix.stop();
+            textLCD.stop();
+            startActivity(new Intent(GameOverAcitivity.this, MainActivity.class));
+            finish();
         });
     }
 }

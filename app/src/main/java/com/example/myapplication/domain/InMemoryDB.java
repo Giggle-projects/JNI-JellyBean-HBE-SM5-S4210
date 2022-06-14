@@ -2,14 +2,16 @@ package com.example.myapplication.domain;
 
 public class InMemoryDB {
 
-    private static Level level = new Level(1);
-    private static Life life = new Life(3);
-    private static Score score = new Score(0);
+    private static Level level;
+    private static Life life;
+    private static Score score;
+    private static Answer answer;
 
     public static void init() {
-        level = new Level(1);
-        life = new Life(3);
-        score = new Score(0);
+        level = new Level();
+        life = new Life();
+        score = new Score();
+        answer = new Answer();
     }
 
     public static Level getLevel() {
@@ -21,4 +23,8 @@ public class InMemoryDB {
     }
 
     public static Score getScore() { return score;}
+
+    public static Answer getAnswer() {
+        return answer;
+    }
 }
