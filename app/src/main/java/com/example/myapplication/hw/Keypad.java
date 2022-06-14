@@ -1,5 +1,7 @@
 package com.example.myapplication.hw;
 
+import android.view.KeyEvent;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,5 +26,9 @@ public static int[][] KEY_CODES = new int[][]{
 
     public int getPositionOfCode(int keycode) {
         return codeTable.get(keycode);
+    }
+
+    public int getPositionOfKeyEvent(KeyEvent keyEvent) {
+        return getPositionOfCode(keyEvent.getKeyCode());
     }
 }

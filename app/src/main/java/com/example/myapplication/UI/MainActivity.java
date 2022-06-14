@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textLcd.print("Let's play a", "Memory Game");
-        dotMatrix.print("WelCome", 5);
+        dotMatrix.print("WelCome", 5, Integer.MAX_VALUE);
         led.printLinear();
         segment.print(220613);
 
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 dotMatrix.stop();
                 textLcd.stop();
                 Intent intent = new Intent(MainActivity.this, ProblemActivity.class);
+                finish();
                 startActivity(intent);
         });
     }

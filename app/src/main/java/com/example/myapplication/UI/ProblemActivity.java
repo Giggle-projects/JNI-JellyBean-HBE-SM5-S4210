@@ -25,7 +25,7 @@ public class ProblemActivity extends AppCompatActivity {
 
         int level = 1;
 
-        dotMatrix.print("3  2  1", 10);
+        dotMatrix.print("3  2  1", 10, 10);
         textLCD.print("Problem Page", "Focus Please!!");
 
         TextView timer = findViewById(R.id.timerText);
