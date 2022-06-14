@@ -18,10 +18,6 @@ public class Life {
         value--;
     }
 
-    public void gain() {
-        value++;
-    }
-
     public void printLed() {
         ledControl(bitCount());
     }

@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.ActivityMainBinding;
+import com.example.myapplication.domain.InMemoryDB;
 import com.example.myapplication.hw.DotMatrix;
 import com.example.myapplication.hw.HwContainer;
 import com.example.myapplication.hw.Keypad;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        Log.d("key down event", keypad.getPositionOfCode(event.getKeyCode())+"");
+        Log.d("key down event", keypad.getPositionOfCode(event.getKeyCode()) + "");
         return true;
     }
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        InMemoryDB.init();
         textLcd.print("Let's play a", "Memory Game");
         dotMatrix.print("WelCome", 5, Integer.MAX_VALUE);
         led.printLinear();
@@ -59,13 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
         Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(view -> {
-                segment.stop();
-                dotMatrix.stop();
-                textLcd.stop();
-                led.print(0);
-                Intent intent = new Intent(MainActivity.this, ProblemActivity.class);
-                finish();
-                startActivity(intent);
+            segment.stop();
+            dotMatrix.stop();
+            textLcd.stop();
+            led.print(0);
+            startActivity(new Intent(MainActivity.this, ProblemActivity.class));
+            finish();
         });
     }
 

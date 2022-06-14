@@ -10,13 +10,9 @@ import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.domain.InMemoryDB;
-import com.example.myapplication.domain.Level;
 import com.example.myapplication.domain.Life;
-import com.example.myapplication.domain.Score;
 import com.example.myapplication.hw.DotMatrix;
 import com.example.myapplication.hw.HwContainer;
-import com.example.myapplication.hw.LED;
-import com.example.myapplication.hw.Segment;
 import com.example.myapplication.hw.TextLCD;
 
 public class ProblemActivity extends AppCompatActivity {
@@ -30,7 +26,7 @@ public class ProblemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_problem);
 
-        dotMatrix.print("3 2 1", 10, 10);
+        dotMatrix.print("Wait!", 5, Integer.MAX_VALUE);
         textLCD.print("Problem Page", "Focus Please!!");
         life.printLed();
 
@@ -56,8 +52,8 @@ public class ProblemActivity extends AppCompatActivity {
             public void run() {
                 textLCD.stop();
                 dotMatrix.stop();
-                Intent intent = new Intent(ProblemActivity.this, GameActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(ProblemActivity.this, GameActivity.class));
+                finish();
             }
         },3000);
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.GameOverActivity">
+    tools:context=".UI.GameOverAcitivity">
 
     <TextView
         android:id="@+id/textView"
@@ -16,21 +16,23 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239" />
+        app:layout_constraintVertical_bias="0.12" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rkLayout"
         android:layout_width="500dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="104dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/gameover"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.157">
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/rktextView"
@@ -40,7 +42,7 @@
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/micraft"
             android:text="Do you want to register \nfor the Rank?"
-            android:textSize="40sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +60,7 @@
             android:background="@drawable/button"
             android:fontFamily="@font/micraft"
             android:text="yes"
-            android:textSize="30sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -71,7 +73,7 @@
             android:background="@drawable/button"
             android:fontFamily="@font/micraft"
             android:text="No"
-            android:textSize="30sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.396"
             app:layout_constraintStart_toEndOf="@+id/yesBtn"

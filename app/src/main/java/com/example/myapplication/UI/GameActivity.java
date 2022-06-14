@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 
 
@@ -44,16 +43,19 @@ public class GameActivity extends AppCompatActivity {
             if (stageScore == level.print()) {
                 level.next();
                 startActivity(new Intent(GameActivity.this, ProblemActivity.class));
+                finish();
             }
         } else {
             dotMatrix.print("Wrong", 5, 1);
             if (life.isOver()) {
-                startActivity(new Intent(GameActivity.this, GameOverActivity.class));
                 segment.stop();
+                startActivity(new Intent(GameActivity.this, GameOverAcitivity.class));
+                finish();
             } else {
                 life.lose();
                 life.printLed();
                 startActivity(new Intent(GameActivity.this, ProblemActivity.class));
+                finish();
             }
         }
         return true;

@@ -19,7 +19,7 @@
             android:name=".GameOverActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.RankActivity"
+            android:name=".UI.GameOverAcitivity"
             android:exported="false" />
         <activity
             android:name=".UI.ProblemActivity"
