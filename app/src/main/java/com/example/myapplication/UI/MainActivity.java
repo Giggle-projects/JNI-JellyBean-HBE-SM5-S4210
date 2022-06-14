@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("myapplication");
     }
 
-    private ActivityMainBinding binding;
-
     private final DotMatrix dotMatrix = HwContainer.dotMatrix;
     private final Segment segment = HwContainer.segment;
     private final TextLCD textLcd = HwContainer.textLcd;
@@ -39,12 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     private long backKeyPressedTime = 0;
     private Toast toast;
-
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        Log.d("key down event", keypad.getPositionOfCode(event.getKeyCode()) + "");
-        return true;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         piezo.out(50, 1000);
         piezo.out(0, 100);
 
-        Button startBtn = findViewById(R.id.startBtn);
+        final Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(view -> {
             segment.stop();
             dotMatrix.stop();

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.KeyEvent;
 
 import com.example.myapplication.R;
@@ -21,11 +20,9 @@ import com.example.myapplication.hw.Keypad;
 import com.example.myapplication.hw.Piezo;
 import com.example.myapplication.hw.TextLCD;
 
-import java.util.Random;
-
 public class GameActivity extends AppCompatActivity {
 
-    private static final long MIN_CLICK_INTERVAL=600;
+    private static final long MIN_CLICK_INTERVAL = 300;
     private long mLastClickTime;
 
     private final Answer answer = InMemoryDB.getAnswer();
@@ -40,19 +37,20 @@ public class GameActivity extends AppCompatActivity {
     private final Life life = InMemoryDB.getLife();
     private final Level level = InMemoryDB.getLevel();
     private final Score score = InMemoryDB.getScore();
-    private final Random random = new Random();
+    private ButtonTable buttonTable;
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         final long currentClickTime = SystemClock.uptimeMillis();
         final long elapsedTime = currentClickTime - mLastClickTime;
         mLastClickTime = currentClickTime;
-
         if (elapsedTime <= MIN_CLICK_INTERVAL) {
             return false;
         }
 
-        if(checkCorrect(event)) {
+        final int bottonPosition = keypad.getPositionOfKeyEvent(event);
+        if (checkCorrect(event)) {
+            buttonTable.setColor(bottonPosition, stageScore);
             piezo.out(1, 100);
             dotMatrix.print("Correct", 5, 1);
             stageScore++;
@@ -63,6 +61,7 @@ public class GameActivity extends AppCompatActivity {
                 finish();
             }
         } else {
+            this.buttonTable.setText(bottonPosition, "X");
             vibrator.vibrate(500);
             dotMatrix.print("Wrong", 5, 1);
             life.lose();
@@ -81,13 +80,7 @@ public class GameActivity extends AppCompatActivity {
 
     private boolean checkCorrect(KeyEvent event) {
         final int userInput = keypad.getPositionOfKeyEvent(event);
-        return answer.isCorrect(life,stageScore, userInput);
-    }
-
-    private void getNewAnswer() {
-        int num = random.nextInt(16);
-        answer.add(life, num);
-        Log.d("tag", String.valueOf(num));
+        return answer.isCorrect(life, stageScore, userInput);
     }
 
     @Override
@@ -95,7 +88,6 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         textLCD.print("### level " + level.value() + " ###", "Game Start");
-        getNewAnswer();
-
+        buttonTable = ButtonTable.initFromActivity(this);
     }
 }

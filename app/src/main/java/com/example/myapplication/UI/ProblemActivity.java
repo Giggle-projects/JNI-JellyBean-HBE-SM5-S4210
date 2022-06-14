@@ -6,17 +6,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.domain.Answer;
 import com.example.myapplication.domain.InMemoryDB;
 import com.example.myapplication.domain.Life;
 import com.example.myapplication.hw.DotMatrix;
 import com.example.myapplication.hw.HwContainer;
 import com.example.myapplication.hw.TextLCD;
 
+import java.util.Random;
+
 public class ProblemActivity extends AppCompatActivity {
 
+    private static final Random random = new Random();
+    private final Answer answer = InMemoryDB.getAnswer();
     private final DotMatrix dotMatrix = HwContainer.dotMatrix;
     private final TextLCD textLCD = HwContainer.textLcd;
     private final Life life = InMemoryDB.getLife();
@@ -30,31 +36,34 @@ public class ProblemActivity extends AppCompatActivity {
         textLCD.print("Problem Page", "Focus Please!!");
         life.printLed();
 
-        TextView timer = findViewById(R.id.timerText);
+        final ButtonTable buttonTable = ButtonTable.initFromActivity(this);
+        final int newAnswer = getNewAnswer();
+        buttonTable.setColor(newAnswer, 0);
 
-        CountDownTimer countDownTimer = new CountDownTimer(4000, 1000) {
+        final TextView timer = findViewById(R.id.timerText);
+        new CountDownTimer(4000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timer.setText("Timer " + millisUntilFinished / 1000);
             }
-
             @Override
             public void onFinish() {
                 timer.setText("done!");
             }
-        };
-        countDownTimer.start();
+        }.start();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                textLCD.stop();
-                dotMatrix.stop();
-                startActivity(new Intent(ProblemActivity.this, GameActivity.class));
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            textLCD.stop();
+            dotMatrix.stop();
+            startActivity(new Intent(ProblemActivity.this, GameActivity.class));
+            finish();
         },3000);
+    }
 
-
+    private int getNewAnswer() {
+        final int num = random.nextInt(16);
+        answer.add(life, num);
+        Log.d("tag", String.valueOf(num));
+        return num;
     }
 }
