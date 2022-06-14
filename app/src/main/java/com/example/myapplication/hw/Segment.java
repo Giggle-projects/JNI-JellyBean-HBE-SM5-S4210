@@ -13,15 +13,13 @@ public class Segment {
         this.thread = new Thread(() -> {
             while (true) {
                 segmentControl(printData);
-                SystemClock.sleep(1);
+                SystemClock.sleep(0);
             }
         });
         this.thread.start();
     }
 
-    public void print(int i) {
-        this.printData = i;
-    }
+    public void print(int i) { this.printData = i; }
 
     public void stop() {
         this.printData = 0;
