@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 segment.stop();
                 dotMatrix.stop();
                 textLcd.stop();
+                led.print(0);
                 Intent intent = new Intent(MainActivity.this, ProblemActivity.class);
                 finish();
                 startActivity(intent);

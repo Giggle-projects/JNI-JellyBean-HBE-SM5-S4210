@@ -9,24 +9,28 @@ import android.os.Handler;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.domain.InMemoryDB;
+import com.example.myapplication.domain.Level;
+import com.example.myapplication.domain.Life;
 import com.example.myapplication.hw.DotMatrix;
 import com.example.myapplication.hw.HwContainer;
+import com.example.myapplication.hw.LED;
 import com.example.myapplication.hw.TextLCD;
 
 public class ProblemActivity extends AppCompatActivity {
 
-    DotMatrix dotMatrix = HwContainer.dotMatrix;
-    TextLCD textLCD = HwContainer.textLcd;
+    final DotMatrix dotMatrix = HwContainer.dotMatrix;
+    final TextLCD textLCD = HwContainer.textLcd;
+    final Life life = InMemoryDB.getLife();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_problem);
 
-        int level = 1;
-
         dotMatrix.print("3  2  1", 10, 10);
         textLCD.print("Problem Page", "Focus Please!!");
+        life.printLed();
 
         TextView timer = findViewById(R.id.timerText);
 
