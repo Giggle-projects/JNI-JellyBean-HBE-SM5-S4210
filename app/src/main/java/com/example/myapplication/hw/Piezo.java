@@ -28,22 +28,13 @@ public class Piezo {
                     final int beat = beats.get(0);
                     piezoControl((char) sound);
                     Thread.sleep(beat);
-
-                    Log.d("s", sound+ " "+ beat);
-                    Log.d("s", sounds.toString());
-
                     sounds.remove(0);
                     beats.remove(0);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                    Log.d("s", e.getMessage());
                 }
             }
         }).start();
-    }
-
-    public void hi() {
-        piezoControl((char) 0);
     }
 
     public void out(int sound, int beat) {

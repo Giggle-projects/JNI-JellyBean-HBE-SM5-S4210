@@ -14,82 +14,91 @@
         android:fontFamily="@font/micraft"/>
 
     <TextView
+        android:id="@+id/R1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="1등 데이터"
+        android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/micraft"/>
 
     <TextView
+        android:id="@+id/R2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="2등 데이터"
-        android:gravity="center"
-
-        android:textSize="20sp"
-        android:fontFamily="@font/micraft"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="3등 데이터"
+        android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/micraft"/>
 
     <TextView
+        android:id="@+id/R3"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="4등 데이터"
+        android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/micraft"/>
 
     <TextView
+        android:id="@+id/R4"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="5등 데이터"
+        android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/micraft"/>
 
     <TextView
+        android:id="@+id/R5"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="6등 데이터"
+        android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/micraft"/>
 
     <TextView
+        android:id="@+id/R6"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="7등 데이터"
+        android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/micraft"/>
 
     <TextView
+        android:id="@+id/R7"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="8등 데이터"
+        android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/micraft"/>
 
     <TextView
+        android:id="@+id/R8"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="9등 데이터"
+        android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/micraft"/>
 
     <TextView
+        android:id="@+id/R9"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="10등 데이터"
+        android:text="RANK    SCORE    NAME"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:fontFamily="@font/micraft"/>
+
+    <TextView
+        android:id="@+id/R10"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/micraft"/>

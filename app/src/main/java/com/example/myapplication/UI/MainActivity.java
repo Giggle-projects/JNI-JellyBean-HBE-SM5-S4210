@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -15,11 +14,11 @@ import com.example.myapplication.domain.InMemoryDB;
 import com.example.myapplication.hw.DotMatrix;
 import com.example.myapplication.hw.FullColorLed;
 import com.example.myapplication.hw.HwContainer;
-import com.example.myapplication.hw.Keypad;
 import com.example.myapplication.hw.LED;
 import com.example.myapplication.hw.Piezo;
 import com.example.myapplication.hw.Segment;
 import com.example.myapplication.hw.TextLCD;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        HwContainer.vibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+        HwContainer.vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         InMemoryDB.init();
 
         textLcd.print("Let's play a", "Memory Game");
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         if (System.currentTimeMillis() <= backKeyPressedTime + 2500) {
             finish();
             toast.cancel();
-            toast = Toast.makeText(this,"이용해 주셔서 감사합니다.",Toast.LENGTH_LONG);
+            toast = Toast.makeText(this, "이용해 주셔서 감사합니다.", Toast.LENGTH_LONG);
             toast.show();
         }
     }
