@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.api.RankApi;
 import com.example.myapplication.domain.InMemoryDB;
 import com.example.myapplication.domain.Score;
 import com.example.myapplication.hw.DotMatrix;
@@ -37,13 +39,26 @@ public class GameOverAcitivity extends AppCompatActivity {
 
         Button yesBtn = findViewById(R.id.yesBtn);
         Button noBtn = findViewById(R.id.noBtn);
+        TextView textView = findViewById(R.id.rktextView);
 
-        yesBtn.setOnClickListener(view -> {
-            dotMatrix.stop();
-            textLCD.stop();
-            startActivity(new Intent(GameOverAcitivity.this, PopUpActivity.class));
-            finish();
-        });
+        if (RankApi.getRankOf(score.value()) > 10) {
+            textView.setText("Do you want a restart\nthe Memory Game?");
+            yesBtn.setOnClickListener(view -> {
+                dotMatrix.stop();
+                textLCD.stop();
+                InMemoryDB.init();
+                startActivity(new Intent(GameOverAcitivity.this, ProblemActivity.class));
+                finish();
+            });
+        } else {
+            textView.setText("Do you want to register\nfor the Rank?");
+            yesBtn.setOnClickListener(view -> {
+                dotMatrix.stop();
+                textLCD.stop();
+                startActivity(new Intent(GameOverAcitivity.this, PopUpActivity.class));
+                finish();
+            });
+        }
 
         noBtn.setOnClickListener(view -> {
             dotMatrix.stop();
@@ -52,5 +67,4 @@ public class GameOverAcitivity extends AppCompatActivity {
             finish();
         });
     }
-
 }

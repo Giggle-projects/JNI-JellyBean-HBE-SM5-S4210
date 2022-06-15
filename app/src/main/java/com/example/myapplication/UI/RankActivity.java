@@ -40,7 +40,10 @@ public class RankActivity extends AppCompatActivity {
         fullColorLed.on(6,10,10,10);
 
         try {
-            List<Rank> ranks = new RankApi().execute().get();
+            final List<Rank> ranks = RankApi.findAll();
+            if(ranks.isEmpty()) {
+                return;
+            }
             dotMatrix.print(ranks.get(0).name(),10, Integer.MAX_VALUE);
             segment.print(ranks.get(0).score());
             binding.R1.setText(ranks.get(0).toString());

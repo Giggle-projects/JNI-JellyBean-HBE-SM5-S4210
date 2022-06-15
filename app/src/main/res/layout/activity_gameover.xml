@@ -41,7 +41,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/micraft"
-            android:text="Do you want to register \nfor the Rank?"
+            android:text="Do you want to register\nfor the Rank?"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

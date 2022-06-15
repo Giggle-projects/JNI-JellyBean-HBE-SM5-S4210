@@ -14,7 +14,6 @@ public class FullColorLed {
 
     public void on(int ledNum, int red, int green, int blue) {
         fullColorLedControl(9, red, green, blue);
-
     }
 
     public void off(int ledNum) {

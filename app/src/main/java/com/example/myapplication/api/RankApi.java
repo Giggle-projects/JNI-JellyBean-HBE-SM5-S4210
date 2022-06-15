@@ -2,64 +2,91 @@ package com.example.myapplication.api;
 
 import android.os.AsyncTask;
 import android.util.JsonReader;
+import android.util.Log;
 
 import com.example.myapplication.domain.Rank;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
-public class RankApi extends AsyncTask<String, Void, List<Rank>> {
+public class RankApi {
 
     private static final String END_POINT = "http://3.214.64.150:8080";
 
-
-
-
-
-    @Override
-    protected List<Rank> doInBackground(String... params) {
-        try {
-            final List<Rank> ranks = new ArrayList<>();
-            final URL endPoint = new URL(END_POINT + "/score");
-            final HttpURLConnection conn = (HttpURLConnection) endPoint.openConnection();
-
-            if (conn.getResponseCode() == 200) {
-                final InputStreamReader responseBodyReader = new InputStreamReader(conn.getInputStream(), "UTF-8");
-
-                final JsonReader jsonReader = new JsonReader(responseBodyReader);
-                jsonReader.beginArray();
-                while (jsonReader.hasNext()) {
-                    jsonReader.beginObject();
-                    while (jsonReader.hasNext()) {
-                        jsonReader.nextName();
-                        final int valRank = jsonReader.nextInt();
-                        jsonReader.nextName();
-                        final String valName = jsonReader.nextString();
-                        jsonReader.nextName();
-                        final int valScore = jsonReader.nextInt();
-                        final Rank rank = new Rank(valRank, valName, valScore);
-                        ranks.add(rank);
+    public static Integer getRankOf(int score) {
+        AsyncTask<String, Void, Integer> asyncTask = new AsyncTask<String, Void, Integer>() {
+            @Override
+            protected Integer doInBackground(String... params) {
+                try {
+                    final URL endPoint = new URL(END_POINT + "/score/rank?score="+score);
+                    final HttpURLConnection conn = (HttpURLConnection) endPoint.openConnection();
+                    if (conn.getResponseCode() != 200) {
+                        throw new IllegalArgumentException("Server connection error");
                     }
-                    jsonReader.endObject();
+                    final InputStreamReader responseBodyReader = new InputStreamReader(conn.getInputStream(), "UTF-8");
+                    final BufferedReader bufferedReader = new BufferedReader(responseBodyReader);
+                    final int valRank = Integer.parseInt(bufferedReader.readLine());
+                    conn.disconnect();
+                    return valRank;
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                jsonReader.endArray();
-                conn.disconnect();
-                jsonReader.close();
-                return ranks;
-            } else {
-                throw new IllegalArgumentException("Server connection error");
+                return Integer.MAX_VALUE;
             }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        };
+        try {
+            return asyncTask.execute().get();
+        } catch (Exception e) {
+            Log.d("ERROR", e.getMessage());
+            return Integer.MAX_VALUE;
         }
-        return Collections.EMPTY_LIST;
+    }
+
+    public static List<Rank> findAll() throws ExecutionException, InterruptedException {
+        AsyncTask<String, Void, List<Rank>> asyncTask = new AsyncTask<String, Void, List<Rank>>() {
+            @Override
+            protected List<Rank> doInBackground(String... params) {
+                try {
+                    final List<Rank> ranks = new ArrayList<>();
+                    final URL endPoint = new URL(END_POINT + "/score");
+                    final HttpURLConnection conn = (HttpURLConnection) endPoint.openConnection();
+                    if (conn.getResponseCode() != 200) {
+                        throw new IllegalArgumentException("Server connection error");
+                    }
+                    final InputStreamReader responseBodyReader = new InputStreamReader(conn.getInputStream(), "UTF-8");
+                    final JsonReader jsonReader = new JsonReader(responseBodyReader);
+                    jsonReader.beginArray();
+                    while (jsonReader.hasNext()) {
+                        jsonReader.beginObject();
+                        while (jsonReader.hasNext()) {
+                            jsonReader.nextName();
+                            final int valRank = jsonReader.nextInt();
+                            jsonReader.nextName();
+                            final String valName = jsonReader.nextString();
+                            jsonReader.nextName();
+                            final int valScore = jsonReader.nextInt();
+                            final Rank rank = new Rank(valRank, valName, valScore);
+                            ranks.add(rank);
+                        }
+                        jsonReader.endObject();
+                    }
+                    jsonReader.endArray();
+                    conn.disconnect();
+                    jsonReader.close();
+                    return ranks;
+                } catch (IOException e) {
+                    Log.d("ERROR", "Server connection error");
+                    return Collections.EMPTY_LIST;
+                }
+            }
+        };
+        return asyncTask.execute().get();
     }
 }

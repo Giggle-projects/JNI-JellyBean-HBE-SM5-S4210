@@ -27,18 +27,13 @@ public class PopUpActivity extends AppCompatActivity {
 
         textLCD.print("### Ranking ###","Register Page");
 
-        EditText editText = findViewById(R.id.nickEdtTxt);
-
-
-        Button regBtn = findViewById(R.id.registerBtn);
-        regBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("nickname", editText.getText().toString());
-                textLCD.stop();
-                startActivity(new Intent(PopUpActivity.this, MainActivity.class));
-                finish();
-            }
+        final EditText editText = findViewById(R.id.nickEdtTxt);
+        final Button regBtn = findViewById(R.id.registerBtn);
+        regBtn.setOnClickListener(view -> {
+            Log.d("nickname", editText.getText().toString());
+            textLCD.stop();
+            startActivity(new Intent(PopUpActivity.this, MainActivity.class));
+            finish();
         });
     }
 }
