@@ -15,6 +15,7 @@ import com.example.myapplication.domain.Level;
 import com.example.myapplication.domain.Life;
 import com.example.myapplication.domain.Score;
 import com.example.myapplication.hw.DotMatrix;
+import com.example.myapplication.hw.FullColorLed;
 import com.example.myapplication.hw.HwContainer;
 import com.example.myapplication.hw.Keypad;
 import com.example.myapplication.hw.Piezo;
@@ -33,6 +34,7 @@ public class GameActivity extends AppCompatActivity {
     private final DotMatrix dotMatrix = HwContainer.dotMatrix;
     private final Vibrator vibrator = HwContainer.vibrator;
     private final Piezo piezo = HwContainer.piezo;
+    private final FullColorLed fullColorLed = HwContainer.fullColorLed;
 
     private final Life life = InMemoryDB.getLife();
     private final Level level = InMemoryDB.getLevel();
@@ -88,6 +90,8 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         textLCD.print("### level " + level.value() + " ###", "Game Start");
+        fullColorLed.on(5, 0, 10);
+        fullColorLed.off(7);
         buttonTable = ButtonTable.initFromActivity(this);
     }
 }

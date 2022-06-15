@@ -93,12 +93,12 @@ Java_com_example_myapplication_GlobalNative_lcdPrint(
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_example_myapplication_GlobalNative_piezoControl(
-        JNIEnv* env,
+        JNIEnv *env,
         jclass clazz,
         jchar data
 ) {
     int fd = open("/dev/fpga_piezo", O_WRONLY);
-    if(fd == -1 ) {
+    if (fd == -1) {
         return env->NewStringUTF(errorMessage.c_str());
     }
 
@@ -124,5 +124,48 @@ Java_com_example_myapplication_GlobalNative_dotMatrixControl(
 
     write(fd, pStr, len);
     close(fd);
+    return env->NewStringUTF(successMessage.c_str());
+}
+
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_example_myapplication_GlobalNative_fullColorLedControl(
+        JNIEnv *env,
+        jclass clazz,
+        jint led_num,
+        jint val1,
+        jint val2,
+        jint val3
+) {
+    int fd = open("/dev/fpga_fullcolorled", O_WRONLY);
+    if (fd == -1) {
+        return env->NewStringUTF(errorMessage.c_str());
+    }
+    switch((int)led_num) {
+        case 9:
+            ioctl(fd,9);
+            break;
+        case 8:
+            ioctl(fd,8);
+            break;
+        case 7:
+            ioctl(fd,7);
+            break;
+        case 6:
+            ioctl(fd,6);
+            break;
+        case 5:
+            ioctl(fd,5);
+            break;
+    }
+    char buf[3];
+    buf[0] = val1;
+    buf[1] = val2;
+    buf[2] = val3;
+
+    write(fd,buf,3);
+    close(fd);
+
     return env->NewStringUTF(successMessage.c_str());
 }

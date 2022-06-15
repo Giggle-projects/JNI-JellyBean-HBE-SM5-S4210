@@ -14,6 +14,8 @@ public class GlobalNative {
 
     public static native String piezoControl(char i);
 
+    public static native String fullColorLedControl(int ledNum, int red, int green, int blue);
+
     public static void printDotMatrix(String value, int speed) {
         char chars[] = value.toCharArray();
         int[] asciis = new int[chars.length];

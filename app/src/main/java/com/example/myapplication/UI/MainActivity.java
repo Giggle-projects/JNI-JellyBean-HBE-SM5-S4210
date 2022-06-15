@@ -6,15 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.ActivityMainBinding;
 import com.example.myapplication.domain.InMemoryDB;
 import com.example.myapplication.hw.DotMatrix;
+import com.example.myapplication.hw.FullColorLed;
 import com.example.myapplication.hw.HwContainer;
 import com.example.myapplication.hw.Keypad;
 import com.example.myapplication.hw.LED;
@@ -33,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private final TextLCD textLcd = HwContainer.textLcd;
     private final LED led = HwContainer.led;
     private final Piezo piezo = HwContainer.piezo;
+    private final FullColorLed fullColorLed = HwContainer.fullColorLed;
     private final Keypad keypad = HwContainer.keypad;
 
     private long backKeyPressedTime = 0;
@@ -49,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         textLcd.print("Let's play a", "Memory Game");
         dotMatrix.print("WelCome", 5, Integer.MAX_VALUE);
         led.printLinear();
+        fullColorLed.on(0, 0, 10);
         segment.print(220613);
 
         piezo.out(50, 1000);

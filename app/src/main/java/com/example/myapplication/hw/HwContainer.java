@@ -9,5 +9,6 @@ public class HwContainer {
     public static final LED led = new LED();
     public static final Keypad keypad = new Keypad();
     public static final Piezo piezo = new Piezo();
+    public static final FullColorLed fullColorLed = new FullColorLed();
     public static Vibrator vibrator;
 }

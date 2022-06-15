@@ -14,6 +14,7 @@ import com.example.myapplication.domain.Answer;
 import com.example.myapplication.domain.InMemoryDB;
 import com.example.myapplication.domain.Life;
 import com.example.myapplication.hw.DotMatrix;
+import com.example.myapplication.hw.FullColorLed;
 import com.example.myapplication.hw.HwContainer;
 import com.example.myapplication.hw.TextLCD;
 
@@ -25,6 +26,7 @@ public class ProblemActivity extends AppCompatActivity {
     private final Answer answer = InMemoryDB.getAnswer();
     private final DotMatrix dotMatrix = HwContainer.dotMatrix;
     private final TextLCD textLCD = HwContainer.textLcd;
+    private final FullColorLed fullColorLed = HwContainer.fullColorLed;
     private final Life life = InMemoryDB.getLife();
 
     @Override
@@ -35,6 +37,8 @@ public class ProblemActivity extends AppCompatActivity {
         dotMatrix.print("Wait!", 5, Integer.MAX_VALUE);
         textLCD.print("Problem Page", "Focus Please!!");
         life.printLed();
+        fullColorLed.on(5, 10, 0);
+        fullColorLed.off(8);
 
         final ButtonTable buttonTable = ButtonTable.initFromActivity(this);
         final int newAnswer = getNewAnswer();
