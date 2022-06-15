@@ -4,7 +4,7 @@ import static com.example.myapplication.GlobalNative.ledControl;
 
 public class Life {
 
-    public static final int INITIAL_LIFE_POINT = 3;
+    public static final int INITIAL_LIFE_POINT = 1;
 
     private int value;
 

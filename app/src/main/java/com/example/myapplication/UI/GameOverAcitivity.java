@@ -2,8 +2,12 @@ package com.example.myapplication.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.myapplication.R;
@@ -27,7 +31,7 @@ public class GameOverAcitivity extends AppCompatActivity {
         setContentView(R.layout.activity_gameover);
 
         dotMatrix.print("Finish", 10, Integer.MAX_VALUE);
-        textLCD.print("### Game Over ###", "final score : " + score.value());
+        textLCD.print("### Game Over ###", "f-score : " + score.value());
         fullColorLed.on(10, 0, 0);
         score.printSegment();
 
@@ -37,7 +41,7 @@ public class GameOverAcitivity extends AppCompatActivity {
         yesBtn.setOnClickListener(view -> {
             dotMatrix.stop();
             textLCD.stop();
-            startActivity(new Intent(GameOverAcitivity.this, MainActivity.class));
+            startActivity(new Intent(GameOverAcitivity.this, PopUpActivity.class));
             finish();
         });
 
@@ -48,4 +52,5 @@ public class GameOverAcitivity extends AppCompatActivity {
             finish();
         });
     }
+
 }

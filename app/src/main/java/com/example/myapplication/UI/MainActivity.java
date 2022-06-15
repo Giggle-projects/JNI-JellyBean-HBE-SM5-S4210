@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private final LED led = HwContainer.led;
     private final Piezo piezo = HwContainer.piezo;
     private final FullColorLed fullColorLed = HwContainer.fullColorLed;
-    private final Keypad keypad = HwContainer.keypad;
 
     private long backKeyPressedTime = 0;
     private Toast toast;
@@ -52,12 +51,16 @@ public class MainActivity extends AppCompatActivity {
         fullColorLed.on(0, 0, 10);
         segment.print(220613);
 
-        piezo.out(50, 1000);
+        piezo.out(50, 100);
         piezo.out(0, 100);
-        piezo.out(52, 1000);
+        piezo.out(52, 100);
         piezo.out(0, 100);
-        piezo.out(50, 1000);
+        piezo.out(50, 100);
         piezo.out(0, 100);
+        piezo.out(46, 100);
+        piezo.out(0, 100);
+        piezo.out(50, 100);
+        piezo.out(52, 500);
 
         final Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(view -> {
@@ -72,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         final Button rankBtn = findViewById(R.id.rankBtn);
         rankBtn.setOnClickListener(view -> {
             startActivity(new Intent(MainActivity.this, RankActivity.class));
-            finish();
         });
     }
 
