@@ -40,7 +40,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/rankingBtn"
+        android:id="@+id/rankBtn"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginStart="50dp"

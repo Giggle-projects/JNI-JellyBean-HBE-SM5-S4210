@@ -1,5 +1,7 @@
 package com.example.myapplication.UI;
 
+import static com.example.myapplication.GlobalNative.segmentControl;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -52,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
 
         final int bottonPosition = keypad.getPositionOfKeyEvent(event);
         if (checkCorrect(event)) {
-            buttonTable.setColor(bottonPosition, stageScore);
+            buttonTable.setColor(bottonPosition, stageScore);;
             piezo.out(1, 100);
             dotMatrix.print("Correct", 5, 1);
             stageScore++;
@@ -64,7 +66,7 @@ public class GameActivity extends AppCompatActivity {
             }
         } else {
             this.buttonTable.setText(bottonPosition, "X");
-            vibrator.vibrate(500);
+            new Thread(()-> vibrator.vibrate(500)).start();
             dotMatrix.print("Wrong", 5, 1);
             life.lose();
             level.reset();

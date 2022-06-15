@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -65,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
             textLcd.stop();
             led.print(0);
             startActivity(new Intent(MainActivity.this, ProblemActivity.class));
+            finish();
+        });
+
+        final Button rankBtn = findViewById(R.id.rankBtn);
+        rankBtn.setOnClickListener(view -> {
+            startActivity(new Intent(MainActivity.this, RankActivity.class));
             finish();
         });
     }
