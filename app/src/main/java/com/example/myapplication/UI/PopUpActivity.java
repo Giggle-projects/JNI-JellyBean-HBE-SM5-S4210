@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.myapplication.R;
+import com.example.myapplication.api.RankApi;
 import com.example.myapplication.domain.InMemoryDB;
 import com.example.myapplication.hw.HwContainer;
 import com.example.myapplication.hw.TextLCD;
@@ -30,7 +31,7 @@ public class PopUpActivity extends AppCompatActivity {
         final EditText editText = findViewById(R.id.nickEdtTxt);
         final Button regBtn = findViewById(R.id.registerBtn);
         regBtn.setOnClickListener(view -> {
-            Log.d("nickname", editText.getText().toString());
+            RankApi.uploadRank(editText.getText().toString(), InMemoryDB.getScore().value());
             textLCD.stop();
             startActivity(new Intent(PopUpActivity.this, MainActivity.class));
             finish();

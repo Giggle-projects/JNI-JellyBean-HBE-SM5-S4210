@@ -9,6 +9,7 @@ import com.example.myapplication.domain.Rank;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,6 +20,34 @@ import java.util.concurrent.ExecutionException;
 public class RankApi {
 
     private static final String END_POINT = "http://3.214.64.150:8080";
+
+    public static void uploadRank(String name, int score) {
+        AsyncTask<String, Void, Void> asyncTask = new AsyncTask<String, Void, Void>() {
+            @Override
+            protected Void doInBackground(String... params) {
+                try {
+                    final URL endPoint = new URL(END_POINT + "/score/rank?score="+score+"&name="+name);
+                    final HttpURLConnection conn = (HttpURLConnection) endPoint.openConnection();
+                    conn.setRequestMethod("POST");
+                    final OutputStream os = conn.getOutputStream();
+                    os.flush();
+                    os.close();
+                    if (conn.getResponseCode() != 200) {
+                        throw new IllegalArgumentException("Server connection error");
+                    }
+                    conn.disconnect();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        };
+        try {
+            asyncTask.execute().get();
+        } catch (Exception e) {
+            Log.d("ERROR", e.getMessage());
+        }
+    }
 
     public static Integer getRankOf(int score) {
         AsyncTask<String, Void, Integer> asyncTask = new AsyncTask<String, Void, Integer>() {

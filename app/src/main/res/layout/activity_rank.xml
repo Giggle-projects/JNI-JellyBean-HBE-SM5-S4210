@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/micraft"/>
 
     <TextView
@@ -20,6 +21,7 @@
         android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/micraft"/>
 
     <TextView
@@ -29,6 +31,7 @@
         android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/micraft"/>
 
     <TextView
@@ -38,6 +41,7 @@
         android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/micraft"/>
 
     <TextView
@@ -47,6 +51,7 @@
         android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/micraft"/>
 
     <TextView
@@ -56,6 +61,7 @@
         android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/micraft"/>
 
     <TextView
@@ -65,6 +71,7 @@
         android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/micraft"/>
 
     <TextView
@@ -74,6 +81,7 @@
         android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/micraft"/>
 
     <TextView
@@ -83,6 +91,7 @@
         android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/micraft"/>
 
     <TextView
@@ -92,6 +101,7 @@
         android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/micraft"/>
 
     <TextView
@@ -101,6 +111,7 @@
         android:text="RANK    SCORE    NAME"
         android:gravity="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/micraft"/>
 
 
