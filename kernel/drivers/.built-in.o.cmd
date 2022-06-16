@@ -1,0 +1,1 @@
+cmd_drivers/hanback/built-in.o :=  arm-linux-gnueabi-ld -EL    -r -o drivers/hanback/built-in.o drivers/hanback/im3640.o drivers/hanback/mpu-dev.o drivers/hanback/vibrator.o drivers/hanback/proximity.o drivers/hanback/fpga/built-in.o drivers/hanback/hanback_fpga_keypad.o drivers/hanback/s4210_keypad.o drivers/hanback/s4210_keypad_sysfs.o 

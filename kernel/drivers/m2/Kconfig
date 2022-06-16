@@ -1,0 +1,79 @@
+menuconfig HANBACK_M2_PERI
+	bool	"Hanback Electronics M2 Device support"
+	depends on MACH_SM7S4412 
+	default yes
+	help
+		Hanback Electronics M2 Device support
+
+if HANBACK_M2_PERI
+config M2_LED
+	tristate "LED(8 bit)"
+	depends on MACH_SM7S4412
+	default no
+	help
+	  8 bit LED test
+	  
+config M2_SEGMENT
+	tristate "7 Segment"
+	depends on MACH_SM7S4412
+	default no
+	help
+	  7 Segment test
+
+config M2_TEXT_LCD
+	tristate "TEXT LCD"
+	depends on MACH_SM7S4412
+	default no
+	help
+	  Text LCD test
+
+config M2_FULL_COLOR_LED
+	tristate "Full Color LED"
+	depends on MACH_SM7S4412
+	default no
+	help
+	  Full Color LED test
+
+config M2_PIEZO
+	tristate "Piezo"
+	depends on MACH_SM7S4412
+	default no
+	help
+	  Piezo test
+
+config M2_KEYPAD
+	tristate "Key matrix"
+	depends on MACH_SM7S4412
+	default no
+	help
+	  Key matrix test
+
+config M2_CDS
+	tristate "CDS"
+	depends on MACH_SM7S4412
+	default no
+	help
+	  CDS test
+
+config M2_SHT20
+        tristate "SHT20"
+        depends on MACH_SM7S4412
+        default no
+        help
+          SHT20 test
+
+config M2_ADC
+        tristate "ADC"
+        depends on MACH_SM7S4412
+        default no
+        help
+          ADC test
+
+config M2_INTERRUPT_BUTTON
+        tristate "INTERRUPT BUTTON"
+        depends on MACH_SM7S4412
+        default no
+        help
+          Interrupt button test
+
+endif 

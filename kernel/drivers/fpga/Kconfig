@@ -1,0 +1,64 @@
+menuconfig HANBACK_FPGA
+	bool	"Hanback Electronics FPGA Device support"
+	depends on MACH_SM7S4412  || MACH_SM5S4210
+	default yes
+	help
+		Hanback Electronics FPGA Device support
+if HANBACK_FPGA
+config FPGA_LED
+	tristate "LED(8 bit)"
+	depends on MACH_SM7S4412 || MACH_SM5S4210
+	default no
+	help
+	  8 bit LED test
+
+config FPGA_TEXT_LCD
+	tristate "TEXT LCD"
+	depends on MACH_SM7S4412 || MACH_SM5S4210
+	default no
+	help
+	  Text LCD test
+
+config FPGA_SEGMENT
+	tristate "7 Segment"
+	depends on MACH_SM7S4412 || MACH_SM5S4210
+	default no
+	help
+	  7 Segment test
+
+config FPGA_DOT_MATRIX
+	tristate "Dot Matrix"
+	depends on MACH_SM7S4412 || MACH_SM5S4210
+	default no
+	help
+	  Dot Matrix test
+
+config FPGA_DIP_SWITCH
+	tristate "Dip Switch"
+	depends on MACH_SM7S4412 || MACH_SM5S4210
+	default no
+	help
+	  Dip Switch test
+
+config FPGA_PIEZO
+	tristate "Piezo"
+	depends on MACH_SM7S4412 || MACH_SM5S4210
+	default no
+	help
+	  Piezo test
+
+config FPGA_FULL_COLOR_LED
+	tristate "Full Color LED"
+	depends on MACH_SM7S4412 || MACH_SM5S4210
+	default no
+	help
+	  Full Color LED test
+
+config FPGA_OLED
+	tristate "OLED"
+	depends on MACH_SM7S4412 || MACH_SM5S4210
+	default no
+	help
+	  OLED test
+
+endif 

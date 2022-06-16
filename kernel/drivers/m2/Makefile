@@ -1,0 +1,10 @@
+obj-$(CONFIG_M2_LED)			 += m2_led.o
+obj-$(CONFIG_M2_SEGMENT)		 += m2_segment.o
+obj-$(CONFIG_M2_TEXT_LCD)		 += m2_textlcd.o
+obj-$(CONFIG_M2_FULL_COLOR_LED)		 += m2_fled.o
+obj-$(CONFIG_M2_PIEZO)			 += m2_piezo.o
+obj-$(CONFIG_M2_KEYPAD)			 += m2_keypad.o
+obj-$(CONFIG_M2_SHT20)			 += m2_sht20.o
+obj-$(CONFIG_M2_CDS)			 += m2_cds.o
+obj-$(CONFIG_M2_ADC)			 += m2_adc.o
+obj-$(CONFIG_M2_INTERRUPT_BUTTON)	 += m2_interrupt.o

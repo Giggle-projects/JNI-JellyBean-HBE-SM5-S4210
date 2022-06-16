@@ -1,0 +1,88 @@
+#
+# Hanback Electronics M3(FPGA) devices
+#
+
+menu "HANBACK"
+
+menuconfig HANBACK_SENSOR
+	bool	"Hanback Electronics Sensor Device support"
+	depends on MACH_SM5S4210 || MACH_SM7S4412
+	default yes
+	help
+		Hanback Electronics Sensor Device support
+
+if HANBACK_SENSOR
+config INPUT_IM3640_I2C
+  bool "Support for iM-3640 sensor"
+  depends on ARCH_EXYNOS4
+  ---help---
+    iM-3640 : Amotech triaxial acceleration and triaxial magnetic field sensor driver for Hanback board.
+    Say Y here if you want to support i2c based sensor...
+config SENSORS_IM3640_POSITION
+        int "IM3640 Mounting Position on Board"
+        depends on INPUT_IM3640_I2C
+        default "5"
+        help
+          Chip mounting position (pin 1).
+            0: top, upper-left
+            1: top, upper-right
+            2: top, lower-right
+            3: top, lower-left
+            4: bottom, upper-left
+            5: bottom, upper-right
+            6: bottom, lower-right
+            7: bottom, lower-left
+
+config MPU_SENSORS_MPU3050
+    tristate "MPU3050"
+    depends on I2C
+    help
+      If you say yes here you get support for the MPU3050 Gyroscope driver
+      This driver can also be built as a module.  If so, the module
+      will be called mpu3050.
+
+config VIBRATOR_HANBACK
+        bool "Hanback Vibrator Driver"
+        depends on MACH_SM5S4210 || MACH_SM7S4412
+        help
+          Hanback Vibrator Driver for HANBACK Device.
+
+config PROXIMITY_SENSOR
+  bool "PROXIMITY Sensor"
+  depends on MACH_SM5S4210 || MACH_SM7S4412
+  help
+    PROXIMITY : proximity sensor driver for Hanback board.
+    Say Y here if you want to support proximity sensor.
+
+endif
+
+source "drivers/hanback/m2/Kconfig"
+
+source "drivers/hanback/fpga/Kconfig"
+
+config KEYPAD_FPGA
+  bool "HBE-XXX-S4210 FPGA keypad support"
+  depends on MACH_SM5S4210
+  help
+    Enable HBE-XXX-S4210 FPGA Keypad Support
+
+config KEYPAD_XXX_S4210
+  bool "HBE-XXX-S4210 GPIO keypad"
+  depends on MACH_SM5S4210 || MACH_EDKS4210
+  help
+    Enable HBE-XXX-S4210 GPIO Keypad Support
+    
+config KEYPAD_SM7S4412
+  bool "HBE-SM7-S4412 GPIO keypad"
+  depends on MACH_SM7S4412
+  help
+    Enable HBE-SM7-S4412 GPIO Keypad Support
+
+config BOARD_ID_SM7S4412
+  bool "HBE-SM7-S4412 BOARD ID"
+  depends on MACH_SM7S4412
+  help
+    Enable HBE-SM7-S4412 Board ID Support
+
+endmenu
+
