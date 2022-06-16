@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.api.RankApi;
 import com.example.myapplication.domain.InMemoryDB;
 import com.example.myapplication.hw.DotMatrix;
 import com.example.myapplication.hw.FullColorLed;

@@ -66,7 +66,12 @@ public class RankApi {
                     return valRank;
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } catch (Throwable a) {
+                    a.printStackTrace();
                 }
+                Log.d("ERROR", "RRR");
                 return Integer.MAX_VALUE;
             }
         };
@@ -74,8 +79,10 @@ public class RankApi {
             return asyncTask.execute().get();
         } catch (Exception e) {
             Log.d("ERROR", e.getMessage());
-            return Integer.MAX_VALUE;
+        } catch (Throwable a) {
+            a.printStackTrace();
         }
+        return Integer.MAX_VALUE;
     }
 
     public static List<Rank> findAll() throws ExecutionException, InterruptedException {

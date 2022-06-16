@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.api.RandomApi;
 import com.example.myapplication.domain.Answer;
 import com.example.myapplication.domain.InMemoryDB;
 import com.example.myapplication.domain.Life;
@@ -65,9 +66,8 @@ public class ProblemActivity extends AppCompatActivity {
     }
 
     private int getNewAnswer() {
-        final int num = random.nextInt(16);
+        final int num = RandomApi.getRand();
         answer.add(life, num);
-        Log.d("tag", String.valueOf(num));
         return num;
     }
 }

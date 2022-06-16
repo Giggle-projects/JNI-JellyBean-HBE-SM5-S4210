@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -41,21 +42,21 @@ public class GameOverAcitivity extends AppCompatActivity {
         Button noBtn = findViewById(R.id.noBtn);
         TextView textView = findViewById(R.id.rktextView);
 
-        if (RankApi.getRankOf(score.value()) > 10) {
+        if (RankApi.getRankOf(score.value()) <= 10) {
+            textView.setText("Do you want to register\nfor the Rank?");
+            yesBtn.setOnClickListener(view -> {
+                dotMatrix.stop();
+                textLCD.stop();
+                startActivity(new Intent(GameOverAcitivity.this, PopUpActivity.class));
+                finish();
+            });
+        } else {
             textView.setText("Do you want a restart\nthe Memory Game?");
             yesBtn.setOnClickListener(view -> {
                 dotMatrix.stop();
                 textLCD.stop();
                 InMemoryDB.init();
                 startActivity(new Intent(GameOverAcitivity.this, ProblemActivity.class));
-                finish();
-            });
-        } else {
-            textView.setText("Do you want to register\nfor the Rank?");
-            yesBtn.setOnClickListener(view -> {
-                dotMatrix.stop();
-                textLCD.stop();
-                startActivity(new Intent(GameOverAcitivity.this, PopUpActivity.class));
                 finish();
             });
         }
