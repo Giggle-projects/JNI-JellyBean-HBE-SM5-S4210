@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.RankActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/micraft"/>
+
+    <TextView
+        android:id="@+id/R1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="RANK    SCORE    NAME"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/micraft"/>
+
+    <TextView
+        android:id="@+id/R2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="RANK    SCORE    NAME"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/micraft"/>
+
+    <TextView
+        android:id="@+id/R3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="RANK    SCORE    NAME"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/micraft"/>
+
+    <TextView
+        android:id="@+id/R4"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="RANK    SCORE    NAME"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/micraft"/>
+
+    <TextView
+        android:id="@+id/R5"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="RANK    SCORE    NAME"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/micraft"/>
+
+    <TextView
+        android:id="@+id/R6"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="RANK    SCORE    NAME"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/micraft"/>
+
+    <TextView
+        android:id="@+id/R7"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="RANK    SCORE    NAME"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/micraft"/>
+
+    <TextView
+        android:id="@+id/R8"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="RANK    SCORE    NAME"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/micraft"/>
+
+    <TextView
+        android:id="@+id/R9"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="RANK    SCORE    NAME"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/micraft"/>
+
+    <TextView
+        android:id="@+id/R10"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="RANK    SCORE    NAME"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/micraft"/>
+
+
+
+
+
+
+</LinearLayout>
