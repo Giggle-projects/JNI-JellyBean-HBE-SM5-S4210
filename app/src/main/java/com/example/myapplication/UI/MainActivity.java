@@ -1,17 +1,15 @@
 package com.example.myapplication.UI;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myapplication.R;
-import com.example.myapplication.api.RankApi;
 import com.example.myapplication.domain.InMemoryDB;
 import com.example.myapplication.hw.DotMatrix;
 import com.example.myapplication.hw.FullColorLed;
@@ -20,6 +18,8 @@ import com.example.myapplication.hw.LED;
 import com.example.myapplication.hw.Piezo;
 import com.example.myapplication.hw.Segment;
 import com.example.myapplication.hw.TextLCD;
+
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         dotMatrix.print("WelCome", 5, Integer.MAX_VALUE);
         led.printLinear();
         fullColorLed.on(0, 0, 10);
-        segment.print(220613);
+        segment.print(dateValue());
 
         piezo.out(50, 100);
         piezo.out(0, 100);
@@ -93,5 +93,13 @@ public class MainActivity extends AppCompatActivity {
             toast = Toast.makeText(this, "이용해 주셔서 감사합니다.", Toast.LENGTH_LONG);
             toast.show();
         }
+    }
+
+    private int dateValue() {
+        final Date date = new Date(System.currentTimeMillis());
+        final int year = (date.getYear() + 1900) % 100;
+        final int month = date.getMonth() + 1;
+        final int dayOfMonth = date.getDate();
+        return (year * 10000) + month * 100 + dayOfMonth;
     }
 }

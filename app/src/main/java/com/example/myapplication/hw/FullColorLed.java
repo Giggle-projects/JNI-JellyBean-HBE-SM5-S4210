@@ -17,6 +17,6 @@ public class FullColorLed {
     }
 
     public void off(int ledNum) {
-        fullColorLedControl(ledNum,0,0,0);
+        fullColorLedControl(ledNum, 0, 0, 0);
     }
 }

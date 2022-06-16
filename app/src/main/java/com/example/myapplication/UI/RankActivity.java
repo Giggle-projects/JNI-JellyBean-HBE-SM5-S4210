@@ -1,9 +1,9 @@
 package com.example.myapplication.UI;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.api.RankApi;
 import com.example.myapplication.databinding.ActivityRankBinding;
@@ -34,17 +34,17 @@ public class RankActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         textLCD.print("# Ranking Page #", "the Hall of Fame");
-        fullColorLed.on(9,10,0,0);
-        fullColorLed.on(8,0,10,0);
-        fullColorLed.on(7,0,0,10);
-        fullColorLed.on(6,10,10,10);
+        fullColorLed.on(9, 10, 0, 0);
+        fullColorLed.on(8, 0, 10, 0);
+        fullColorLed.on(7, 0, 0, 10);
+        fullColorLed.on(6, 10, 10, 10);
 
         try {
             final List<Rank> ranks = RankApi.findAll();
-            if(ranks.isEmpty()) {
+            if (ranks.isEmpty()) {
                 return;
             }
-            dotMatrix.print(ranks.get(0).name(),10, Integer.MAX_VALUE);
+            dotMatrix.print(ranks.get(0).name(), 10, Integer.MAX_VALUE);
             segment.print(ranks.get(0).score());
             binding.R1.setText(ranks.get(0).toString());
             binding.R2.setText(ranks.get(1).toString());
@@ -57,7 +57,7 @@ public class RankActivity extends AppCompatActivity {
             binding.R9.setText(ranks.get(8).toString());
             binding.R10.setText(ranks.get(9).toString());
         } catch (IndexOutOfBoundsException e) {
-           e.printStackTrace();
+            e.printStackTrace();
             Log.d("error", e.getMessage());
         } catch (ExecutionException e) {
             e.printStackTrace();

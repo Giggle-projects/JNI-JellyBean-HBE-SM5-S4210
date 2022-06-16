@@ -30,7 +30,7 @@ public class Rank {
             rankMark = "ST";
         } else if (rank % 10 == 2) {
             rankMark = "ND";
-        } else if(rank % 10 == 3) {
+        } else if (rank % 10 == 3) {
             rankMark = "RD";
         } else {
             rankMark = "TH";

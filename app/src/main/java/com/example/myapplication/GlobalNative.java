@@ -19,19 +19,19 @@ public class GlobalNative {
     public static void printDotMatrix(String value, int speed) {
         char chars[] = value.toCharArray();
         int[] asciis = new int[chars.length];
-        for(int i =0; i<chars.length; i++) {
+        for (int i = 0; i < chars.length; i++) {
             asciis[i] = Integer.valueOf(chars[i]);
         }
 
         String result = "00000000000000000000";
-        for(int asciiInt : asciis) {
+        for (int asciiInt : asciis) {
             if (asciiInt < 32 || asciiInt > 126) {
                 break;
             }
             asciiInt -= 0x20;
             for (int j = 0; j < 5; j++) {
                 String font = Integer.toHexString((GlobalNative.font[asciiInt][j]));
-                if (font.length() < 2){
+                if (font.length() < 2) {
                     result += "0";
                 }
                 result += font;

@@ -26,7 +26,7 @@ public class RankApi {
             @Override
             protected Void doInBackground(String... params) {
                 try {
-                    final URL endPoint = new URL(END_POINT + "/score/rank?score="+score+"&name="+name);
+                    final URL endPoint = new URL(END_POINT + "/score/rank?score=" + score + "&name=" + name);
                     final HttpURLConnection conn = (HttpURLConnection) endPoint.openConnection();
                     conn.setRequestMethod("POST");
                     final OutputStream os = conn.getOutputStream();
@@ -54,7 +54,7 @@ public class RankApi {
             @Override
             protected Integer doInBackground(String... params) {
                 try {
-                    final URL endPoint = new URL(END_POINT + "/score/rank?score="+score);
+                    final URL endPoint = new URL(END_POINT + "/score/rank?score=" + score);
                     final HttpURLConnection conn = (HttpURLConnection) endPoint.openConnection();
                     if (conn.getResponseCode() != 200) {
                         throw new IllegalArgumentException("Server connection error");

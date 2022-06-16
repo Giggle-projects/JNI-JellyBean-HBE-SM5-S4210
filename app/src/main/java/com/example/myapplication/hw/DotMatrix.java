@@ -2,8 +2,6 @@ package com.example.myapplication.hw;
 
 import static com.example.myapplication.GlobalNative.printDotMatrix;
 
-import android.util.Log;
-
 public class DotMatrix {
 
     private Thread thread;
@@ -14,7 +12,7 @@ public class DotMatrix {
     public DotMatrix() {
         thread = new Thread(() -> {
             while (true) {
-                if(printCount > 0) {
+                if (printCount > 0) {
                     printCount--;
                     printDotMatrix(msg, speed);
                 }
@@ -30,7 +28,7 @@ public class DotMatrix {
     }
 
     public void print(String msg) {
-        print(msg,20, 1);
+        print(msg, 20, 1);
     }
 
     public void stop() {

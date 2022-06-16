@@ -2,8 +2,6 @@ package com.example.myapplication.hw;
 
 import static com.example.myapplication.GlobalNative.piezoControl;
 
-import android.util.Log;
-
 import java.util.LinkedList;
 import java.util.List;
 

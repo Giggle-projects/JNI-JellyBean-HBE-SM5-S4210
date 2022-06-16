@@ -1,6 +1,7 @@
 package com.example.myapplication.hw;
 
-import static com.example.myapplication.GlobalNative.*;
+import static com.example.myapplication.GlobalNative.lcdClear;
+import static com.example.myapplication.GlobalNative.lcdPrint;
 
 public class TextLCD {
 

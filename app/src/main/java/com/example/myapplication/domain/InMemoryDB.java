@@ -22,7 +22,11 @@ public class InMemoryDB {
         return life;
     }
 
-    public static Score getScore() { return score;}
+    public static Score getScore() {
+        return score;
+    }
 
-    public static Answer getAnswer() { return answer; }
+    public static Answer getAnswer() {
+        return answer;
+    }
 }

@@ -16,7 +16,7 @@ public class ButtonTable {
 
     private final Map<Integer, Button> buttonTable;
 
-    public static ButtonTable initFromActivity(AppCompatActivity appCompatActivity){
+    public static ButtonTable initFromActivity(AppCompatActivity appCompatActivity) {
         final Map<Integer, Button> buttonTable = new HashMap<>();
         buttonTable.put(0, appCompatActivity.findViewById(R.id.but1));
         buttonTable.put(1, appCompatActivity.findViewById(R.id.but2));

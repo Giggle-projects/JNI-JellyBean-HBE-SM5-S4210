@@ -1,13 +1,12 @@
 package com.example.myapplication.UI;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.api.RandomApi;
@@ -51,6 +50,7 @@ public class ProblemActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 timer.setText("Timer " + millisUntilFinished / 1000);
             }
+
             @Override
             public void onFinish() {
                 timer.setText("done!");
@@ -62,7 +62,7 @@ public class ProblemActivity extends AppCompatActivity {
             dotMatrix.stop();
             startActivity(new Intent(ProblemActivity.this, GameActivity.class));
             finish();
-        },3000);
+        }, 3000);
     }
 
     private int getNewAnswer() {

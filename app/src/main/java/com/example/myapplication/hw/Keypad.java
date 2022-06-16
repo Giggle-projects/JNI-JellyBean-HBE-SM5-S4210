@@ -1,10 +1,6 @@
 package com.example.myapplication.hw;
 
-import android.os.Bundle;
 import android.view.KeyEvent;
-import android.widget.Button;
-
-import com.example.myapplication.R;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -2,8 +2,6 @@ package com.example.myapplication.hw;
 
 import static com.example.myapplication.GlobalNative.ledControl;
 
-import android.util.Log;
-
 public class LED {
 
     public void print(int i) {
@@ -12,7 +10,7 @@ public class LED {
 
     public void printLinear() {
         try {
-            for(int j = 2; j<= 8; j*=2) {
+            for (int j = 2; j <= 8; j *= 2) {
                 for (int i = 128; i > 0; i /= j) {
                     print(i);
                     Thread.sleep(30);
