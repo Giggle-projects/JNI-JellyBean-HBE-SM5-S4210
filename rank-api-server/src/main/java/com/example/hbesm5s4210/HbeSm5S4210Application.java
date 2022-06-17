@@ -1,6 +1,5 @@
 package com.example.hbesm5s4210;
 
-import com.example.hbesm5s4210.domain.HighScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

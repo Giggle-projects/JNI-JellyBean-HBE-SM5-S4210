@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +25,15 @@ public class GameController {
 
     public GameController(HighScoreRepository highScoreRepository) {
         this.highScoreRepository = highScoreRepository;
+    }
+
+    @GetMapping("/info")
+    public ResponseEntity<String> info() {
+        try {
+            return ResponseEntity.ok(Inet4Address.getLocalHost().getHostAddress());
+        }catch (IOException e) {
+            throw new IllegalArgumentException("ERROR in get ip address");
+        }
     }
 
     @GetMapping("/score")
